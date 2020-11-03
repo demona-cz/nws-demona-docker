@@ -1,20 +1,9 @@
 FROM demonacz/nws171:latest
 
-# installation tools
-RUN apt-get update \
-    && apt-get -y install wget p7zip
-
 # unpacking Demona module files
-RUN wget http://demona.cz/download/inst-demona-5.05.x.7z \
-    && 7zr x inst-demona-5.05.x.7z \
+RUN wget --quiet http://demona.cz/download/inst-demona-5.05.x.7z \
+    && 7zr x -bsp0 -bso0 inst-demona-5.05.x.7z \
     && rm inst-demona-5.05.x.7z
-
-# cleanup unnecessary tools
-RUN apt-get purge -y wget p7zip \
-    && apt-get autoclean -y
-
-# Demona specific entrypoint needed
-COPY entrypoint.sh .
 
 ENV NWS_MODULE demona
 ENV NWS_ROTATE_LOGS true
@@ -43,4 +32,5 @@ ENV SERVER_OPTIONS_SERVER_NAME "Demona PW (http://demona.cz/)"
 ENV SERVER_OPTIONS_SHOW_DM_JOINED_MESSAGE 0
 ENV SERVER_OPTIONS_SUPPRESS_BASE_SERVERVAULT 1
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+# Demona specific entrypoint needed
+COPY entrypoint.sh .
