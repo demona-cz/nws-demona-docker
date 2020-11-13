@@ -20,12 +20,12 @@ moduleToStart=$NWS_MODULE
 if [ $NWS_ROTATE_MODULES = true ]; then
 
     # mark all modules with timestamp prefix
-    for f in $(find modules -maxdepth 1 -regex "^modules\/$NWS_MODULE-\d*\.\d*\.\d*\.mod"); do
+    for f in $(find modules -maxdepth 1 -name "$NWS_MODULE-[0-9]*\.[0-9]*\.[0-9]*\.mod"); do
         mv $f modules/$startTimestamp-$(basename $f)
     done
 
     # resolve newest version
-    moduleToStart=$(find modules -maxdepth 1 -regex "^modules\/\d{14}-$NWS_MODULE-\d*\.\d*\.\d*\.mod" | sort -r | head -1 | xargs -i basename {} .mod)
+    moduleToStart=$(find modules -maxdepth 1 -name "[0-9]*-$NWS_MODULE-[0-9]*\.[0-9]*\.[0-9]*\.mod" | sort -r | head -1 | xargs -i basename {} .mod)
     if [ -e $moduleToStart ]; then
         echo 'no module to start'
         exit 1
