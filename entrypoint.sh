@@ -9,9 +9,11 @@ rm -rf .nwnpid currentgame.* temp.*
 # handle auto-rotating logs
 if [ $NWS_ROTATE_LOGS = true -a -w $NWS_LOGS_DIR ]; then
 
-    logsDir=$NWS_LOGS_DIR/logs-$startTimestamp
+    dirName=logs-$startTimestamp
+    logsDir=$NWS_LOGS_DIR/$dirName
     mkdir $logsDir
     ln -sfn $logsDir logs.0
+    ln -sfn $dirName/nwserverLog1.txt $NWS_LOGS_DIR/current.log
 fi
 
 # handle auto-rotating (versioning) modules
@@ -20,12 +22,12 @@ moduleToStart=$NWS_MODULE
 if [ $NWS_ROTATE_MODULES = true ]; then
 
     # mark all modules with timestamp prefix
-    for f in $(find modules -maxdepth 1 -name "$NWS_MODULE-[0-9]*\.[0-9]*\.[0-9]*\.mod"); do
+    for f in $(find modules -maxdepth 1 -name "$NWS_MODULE-[0-9]*_[0-9]*_[0-9]**\.mod"); do
         mv $f modules/$startTimestamp-$(basename $f)
     done
 
     # resolve newest version
-    moduleToStart=$(find modules -maxdepth 1 -name "[0-9]*-$NWS_MODULE-[0-9]*\.[0-9]*\.[0-9]*\.mod" | sort -r | head -1 | xargs -i basename {} .mod)
+    moduleToStart=$(find modules -maxdepth 1 -name "[0-9]*-$NWS_MODULE-[0-9]*_[0-9]*_[0-9]**\.mod" | sort -r | head -1 | xargs -i basename {} .mod)
     if [ -e $moduleToStart ]; then
         echo 'no module to start'
         exit 1
