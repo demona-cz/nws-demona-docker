@@ -56,7 +56,7 @@ RUN wget --quiet https://github.com/jwilder/dockerize/releases/download/$DOCKERI
 COPY nwnplayer.ini.tmpl .
 
 # demona installation
-RUN wget --quiet http://demona.cz/download/inst-demona-06.01.x.7z \
+RUN wget --quiet https://demona.cz/download/inst-demona-06.01.x.7z \
     && 7zr x -bsp0 -bso0 inst-demona-06.01.x.7z \
     && rm inst-demona-06.01.x.7z
 
@@ -80,7 +80,7 @@ ENV SERVER_OPTIONS_ONE_PARTY_ONLY 0
 ENV SERVER_OPTIONS_PVP_SETTINGS 2
 ENV SERVER_OPTIONS_RELOAD_MODULE_WHEN_EMPTY=1
 ENV SERVER_OPTIONS_RESTORE_SPELL_USES_ON_LOGIN 1
-ENV SERVER_OPTIONS_SERVER_NAME "Demona PW (http://demona.cz/)"
+ENV SERVER_OPTIONS_SERVER_NAME "Demona (https://demona.cz/)"
 ENV SERVER_OPTIONS_SHOW_DM_JOINED_MESSAGE 0
 ENV SERVER_OPTIONS_SUPPRESS_BASE_SERVERVAULT 1
 
