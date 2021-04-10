@@ -1,0 +1,64 @@
+[Banned CD Keys]
+{{ range $i, $v := split (default .Env.BANNED_CD_KEYS "") "|" }}
+    {{- $i }}={{ $v }}
+{{ end }}
+
+[Banned Ips]
+{{ range $i, $v := split (default .Env.BANNED_IPS "") "|" }}
+    {{- $i }}={{ $v }}
+{{ end }}
+
+[Banned Players]
+{{ range $i, $v := split (default .Env.BANNED_PLAYERS "") "|" }}
+    {{- $i }}={{ $v }}
+{{ end }}
+
+[Game Options]
+Death Logging={{ default .Env.GAME_OPTIONS_DEATH_LOGGING "0" }}
+Difficulty Level={{ default .Env.GAME_OPTIONS_DIFFICULTY_LEVEL "2" }}
+Heartbeat Logging={{ default .Env.GAME_OPTIONS_HEARTBEAT_LOGGING "0" }}
+Log Model Errors={{ default .Env.GAME_OPTIONS_LOG_MODEL_ERRORS "0" }}
+
+[Script Options]
+Enable Logging={{ default .Env.SCRIPT_OPTIONS_ENABLE_LOGGING "0" }}
+Enable Profiling={{ default .Env.SCRIPT_OPTIONS_ENABLE_PROFILING "0" }}
+
+[Server Options]
+2DA Cache Size={{ default .Env.SERVER_OPTIONS_2DA_CACHE_SIZE "10" }}
+2DA Engine Cache Size={{ default .Env.SERVER_OPTIONS_2DA_ENGINE_CACHE_SIZE "11" }}
+Account validation required during Master Server down times={{ default .Env.SERVER_OPTIONS_ACCOUNT_VALIDATION_REQUIRED_DURING_MASTER_SERVER_DOWN_TIMES "0" }}
+AllowLocalChars={{ default .Env.SERVER_OPTIONS_ALLOW_LOCAL_CHARS "1" }}
+Always Reset Encounter Spawns={{ default .Env.SERVER_OPTIONS_ALWAYS_RESET_ENCOUNTER_SPAWNS "0" }}
+Auto Save Interval={{ default .Env.SERVER_OPTIONS_AUTO_SAVE_INTERVAL "0" }}
+BackupSavedChars={{ default .Env.SERVER_OPTIONS_BACKUP_SAVED_CHARS "0" }}
+CD Banned Behavior={{ default .Env.SERVER_OPTIONS_CD_BANNED_BEHAVIOR "0" }}
+DMPassword={{ default .Env.SERVER_OPTIONS_DM_PASSWORD "dmP455W0RD" }}
+Disable AutoSave={{ default .Env.SERVER_OPTIONS_DISABLE_AUTOSAVE "0" }}
+Disallow Shouting={{ default .Env.SERVER_OPTIONS_DISALLOW_SHOUTING "0" }}
+Enforce Legal Characters={{ default .Env.SERVER_OPTIONS_ENFORCE_LEGAL_CHARACTERS "1" }}
+Examine CR On Creatures={{ default .Env.SERVER_OPTIONS_EXAMINE_CR_ON_CREATURES "1" }}
+Examine Effects On Creatures={{ default .Env.SERVER_OPTIONS_EXAMINE_EFFECTS_ON_CREATURES "1" }}
+Game Port={{ default .Env.SERVER_OPTIONS_GAME_PORT "5121" }}
+Game Region={{ default .Env.SERVER_OPTIONS_GAME_REGION "0" }}
+Game Type={{ default .Env.SERVER_OPTIONS_GAME_TYPE "0" }}
+GameSpy Enabled={{ default .Env.SERVER_OPTIONS_GAMESPY_ENABLED "1" }}
+Hide Hit Points Gained={{ default .Env.SERVER_OPTIONS_HIDE_HIT_POINTS_GAINED "0" }}
+ItemLevelRestrictions={{ default .Env.SERVER_OPTIONS_ITEM_LEVEL_RESTRICTIONS "0" }}
+Master Server Authentication Required For Player Login={{ default .Env.SERVER_OPTIONS_MASTER_SERVER_AUTHENTICATION_REQUIRED_FOR_PLAYER_LOGIN "0" }}
+Max Hit Points={{ default .Env.SERVER_OPTIONS_MAX_HIT_POINTS "0" }}
+Max Players={{ default .Env.SERVER_OPTIONS_MAX_PLAYERS "6" }}
+MaxCharLevel={{ default .Env.SERVER_OPTIONS_MAX_CHAR_LEVEL "20" }}
+MinCharLevel={{ default .Env.SERVER_OPTIONS_MIN_CHAR_LEVEL "1" }}
+One Party Only={{ default .Env.SERVER_OPTIONS_ONE_PARTY_ONLY "1" }}
+PVP Setting={{ default .Env.SERVER_OPTIONS_PVP_SETTINGS "1" }}
+PauseAndPlay={{ default .Env.SERVER_OPTIONS_PAUSE_AND_PLAY "0" }}
+PlayerPassword={{ default .Env.SERVER_OPTIONS_PLAYER_PASSWORD "" }}
+Reload Module When Empty={{ default .Env.SERVER_OPTIONS_RELOAD_MODULE_WHEN_EMPTY "0" }}
+Restore Spell Uses On Login={{ default .Env.SERVER_OPTIONS_RESTORE_SPELL_USES_ON_LOGIN "0" }}
+RotateServerLog={{ default .Env.SERVER_OPTIONS_ROTATE_SERVER_LOG "0" }}
+Saving Throw Automatic Failure On 1={{ default .Env.SERVER_OPTIONS_SAVING_THROW_AUTOMATIC_FAILURE_ON_1 "1" }}
+Server Name={{ default .Env.SERVER_OPTIONS_SERVER_NAME "Server" }}
+ServerDownTimer={{ default .Env.SERVER_OPTIONS_SERVER_DOWN_TIMER "180" }}
+ShowDMJoinedMessage={{ default .Env.SERVER_OPTIONS_SHOW_DM_JOINED_MESSAGE "1" }}
+Suppress Base Servervault={{ default .Env.SERVER_OPTIONS_SUPPRESS_BASE_SERVERVAULT "0" }}
+Validate Spells={{ default .Env.SERVER_OPTIONS_VALIDATE_SPELLS "1" }}
