@@ -10,7 +10,7 @@ RUN apt-get -qq update \
     && apt-get -qq install wget unzip p7zip
 
 # nwserver 1.69 installation
-RUN wget --quiet https://neverwintervault.org/sites/all/modules/pubdlcnt/pubdlcnt.php?fid=2674 -O nwndedicatedserver1.69.zip \
+RUN wget --quiet https://demona.cz/download/nwndedicatedserver1.69.zip -O nwndedicatedserver1.69.zip \
     && unzip -q nwndedicatedserver1.69.zip \
     && tar xzf linuxdedserver169.tar.gz \
     && bash fixinstall
@@ -40,7 +40,7 @@ RUN mkdir tlk
 
 # patch 1.71 installation
 RUN mkdir p171 \
-    && wget --quiet https://neverwintervault.org/sites/all/modules/pubdlcnt/pubdlcnt.php\?fid\=1982 -O p171/nwnpatch171.exe \
+    && wget --quiet https://demona.cz/download/nwnpatch171.exe -O p171/nwnpatch171.exe \
     && 7zr e -bsp0 -bso0 -op171 p171/nwnpatch171.exe \
     && mv p171/patch171.bif data \
     && mv p171/xp2patch.key . \
@@ -56,9 +56,9 @@ RUN wget --quiet https://github.com/jwilder/dockerize/releases/download/$DOCKERI
 COPY nwnplayer.ini.tmpl .
 
 # demona installation
-RUN wget --quiet https://demona.cz/download/inst-demona-06.02.x.7z \
-    && 7zr x -bsp0 -bso0 inst-demona-06.02.x.7z \
-    && rm inst-demona-06.02.x.7z
+RUN wget --quiet https://demona.cz/download/inst-demona-06.03.x.7z \
+    && 7zr x -bsp0 -bso0 inst-demona-06.03.x.7z \
+    && rm inst-demona-06.03.x.7z
 
 ENV NWS_MODULE demona
 ENV NWS_ROTATE_LOGS true
