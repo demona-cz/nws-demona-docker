@@ -56,9 +56,9 @@ RUN wget --quiet https://github.com/jwilder/dockerize/releases/download/$DOCKERI
 COPY nwnplayer.ini.tmpl .
 
 # demona installation
-RUN wget --quiet https://demona.cz/download/inst-demona-06.03.x.7z \
-    && 7zr x -bsp0 -bso0 inst-demona-06.03.x.7z \
-    && rm inst-demona-06.03.x.7z
+RUN wget --quiet https://demona.cz/download/inst-demona-06.04.x.7z \
+    && 7zr x -bsp0 -bso0 inst-demona-06.04.x.7z \
+    && rm inst-demona-06.04.x.7z
 
 ENV NWS_MODULE demona
 ENV NWS_ROTATE_LOGS true
